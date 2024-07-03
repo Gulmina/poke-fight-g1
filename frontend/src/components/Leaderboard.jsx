@@ -13,8 +13,8 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div>
-      <h1>High Scorer Borad</h1>
+    <div className="border-solid border-2 border-indigo-600">
+      <h1 className="text-center text-lg">High Scorer Borad</h1>
       <ul>
         {games.map((game) => (
           <li key={game._id}>
