@@ -3,19 +3,23 @@ import dotenv from "dotenv";
 import pkg from "./data.js";
 import express from "express";
 
-//import "./db.js";
+import gameRoutes from "./routes/gameRoute.js";
 import connectDB from "./db2.js";
 
-const app = express();
+//import "./db.js";
 const data = pkg;
 const port = 8000;
 
 dotenv.config();
-
 connectDB();
 
+const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
+
+///Sending and retrieving data from data base//
+app.use("/game/gameinfo", gameRoutes);
+app.use("/game/savegame", gameRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
