@@ -1,7 +1,7 @@
 import "./index.css";
 import Home from "./pages/Home";
 import Allpokemon from "./pages/Allpokemon";
-import Singlepokemon from "./pages/Singlepokemon";
+import Singlepokemon from "./pages/Singlepokemon.jsx";
 import Pokemoninfo from "./pages/Pokemoninfo";
 
 /* import Player from "./pages/Player.jsx"; */
