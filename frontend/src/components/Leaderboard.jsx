@@ -18,8 +18,8 @@ const Leaderboard = () => {
       <ul>
         {games.map((game) => (
           <li key={game._id}>
-            {game.name} : {game.winner} defeated {game.loser} in {game.games}
-            turns
+            {game.name} : {game.winner} defeated {game.loser} lost in{" "}
+            {game.games} games.
           </li>
         ))}
       </ul>
