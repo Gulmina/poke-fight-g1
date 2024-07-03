@@ -7,10 +7,12 @@ import Pokemoninfo from "./pages/Pokemoninfo";
 /* import Player from "./pages/Player.jsx"; */
 
 import { Routes, Route } from "react-router-dom";
+import Leaderboard from "./components/Leaderboard.jsx";
 
 function App() {
   return (
     <>
+      <Leaderboard />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pokemon" element={<Allpokemon />} />
