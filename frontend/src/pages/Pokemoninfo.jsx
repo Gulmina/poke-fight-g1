@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import App from "../App";
 
-const PokemonInfo = () => {
+const Pokemoninfo = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [error, setError] = useState(null);
 
@@ -13,7 +13,7 @@ const PokemonInfo = () => {
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/pokemon/${id}`);
+      const res = await axios.get(`http://localhost:8000/pokemon/${id}/${info}`);
       console.log(res.data);
       setPokemonData(res.data);
     } catch (error) {
@@ -35,8 +35,10 @@ const PokemonInfo = () => {
       <div>
         {pokemonData ? (
           <div>
-            <h2>{pokemonData.id}</h2>
-            <p>Type: {pokemonData.type}</p>
+          {pokemonData &&
+              Object.values(pokemonData)?.map((item, index) => (
+                <li key={index}> {item} </li>
+              ))}
             {/* Add more details here */}
           </div>
         ) : (
@@ -48,4 +50,4 @@ const PokemonInfo = () => {
   );
 };
 
-export default PokemonInfo;
+export default Pokemoninfo;
