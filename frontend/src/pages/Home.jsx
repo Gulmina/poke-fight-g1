@@ -18,12 +18,12 @@ const Home = () => {
               </h1>
               <img className="mb-9 mt-9 min-w-fit" src={ball} alt="Pokemon Ball" />
               <Link to={`/pokemon`}>
-                <button className="text-4xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl  w-40 h-12">
+                <button className="text-4xl font-medium pb-1 shadow-xl duration-300 hover:bg-green-600 bg-green-500 text-white rounded-3xl  w-40 h-12">
                   Start
                 </button>
               </Link>
               <Link to={`/pokemon/game/leaderboard`}>
-                <button className="text-4xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl  w-60 h-12 mt-5">
+                <button className="text-4xl font-medium pb-1 shadow-xl duration-300 hover:bg-green-600 bg-green-500 text-white rounded-3xl  w-60 h-12 mt-5">
                   Leaderboard
                 </button>
               </Link>
