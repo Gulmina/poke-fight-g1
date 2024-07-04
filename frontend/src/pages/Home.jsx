@@ -22,6 +22,11 @@ const Home = () => {
                   Start
                 </button>
               </Link>
+              <Link to={`/pokemon/game/leaderboard`}>
+                <button className="text-4xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl  w-60 h-12 mt-5">
+                  Leaderboard
+                </button>
+              </Link>
             </header>
             <footer className="flex pt-28 pl-10 items-center sticky bottom-0 ">
               <p className="">Powerd by GroupOne</p>
