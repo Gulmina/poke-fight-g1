@@ -72,13 +72,13 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
-                  path="/pokemon"
+                  path="/pokemon/players/:id"
                   element={
                     <Allpokemon allData={allData} setAllData={setAllData} />
                   }
                 />
                 <Route
-                  path="/pokemon/:id"
+                  path="/pokemon/players/:id/:id"
                   element={
                     <Singlepokemon
                       setpokemonId={setpokemonId}
@@ -96,7 +96,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="/pokemon/game"
+                  path="/pokemon/players/:id/:id/game"
                   element={<Game pokemonId={pokemonId} />}
                 />
                 <Route path="/pokemon/players" element={<Playerselect />} />

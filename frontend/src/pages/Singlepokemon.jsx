@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 
 const Singlepokemon = ({ pokemonId, setpokemonId }) => {
   const { id } = useParams();
-  // console.log(id);
+
+  console.log(id, name);
 
   const getpokemondata = async () => {
     try {
@@ -51,7 +52,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
       </div>
 
       <div className=" justify-center items-center mt-5">
-        <Link to={`/pokemon/game`}>
+        <Link to={`/pokemon/players/:id/:${id}/game`}>
           {/* <a href="http://localhost:5173/pokemon/game"> */}
           <button className="handleClick bg-red-700 text-white rounded w-auto p-2">
             Go to Arena

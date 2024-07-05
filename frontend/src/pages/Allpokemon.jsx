@@ -1,9 +1,11 @@
-import {Link} from 'react-router-dom'
+import { Link, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function AllPokemon({allData, setAllData}) {
+function AllPokemon({ allData, setAllData }) {
+  const playerId = useParams();
   // const [data, setData] = useState([]);
+  console.log(playerId);
 
   useEffect(() => {
     axios
@@ -20,36 +22,39 @@ function AllPokemon({allData, setAllData}) {
   return (
     <div className="bg-gray-300 text-center">
       <div className="font-bold text-4xl pt-8 text-orange-300">
-        Pokemon List
+        <strong className="text-black"> {playerId.id} </strong>
+        <p>pick your favourite Pokemon for the battle</p>
       </div>
       {allData.length > 0 ? (
         allData.map((pokemon) => (
-          <Link to={`/pokemon/${pokemon.id}`}>
-
-          <div key={pokemon.id} className="bg-slate-300 m-10 p-10 rounded-2xl">
-            {/* <div>ID: {data.id}</div> */}
-            <div className="flex justify-between">
-              <div className="flex-col">
-                Name:
-                <div>English: {pokemon.name.english}</div>
-                <div>Japanese: {pokemon.name.japanese}</div>
-                <div>Chinese: {pokemon.name.chinese}</div>
-                <div>French: {pokemon.name.french}</div>
-              </div>
-              <div>Type: {pokemon.type.join(", ")}</div>
-              <div>
-                Base Status:
-                <ul>
-                  {Object.entries(pokemon.base).map(([key, value]) => (
-                    <li key={key}>
-                      {key}: {value}
-                    </li>
-                  ))}
-                </ul>
+          <Link to={`/pokemon/players/${playerId.id}/${pokemon.id}`}>
+            <div
+              key={pokemon.id}
+              className="bg-slate-300 m-10 p-10 rounded-2xl"
+            >
+              {/* <div>ID: {data.id}</div> */}
+              <div className="flex justify-between">
+                <div className="flex-col">
+                  Name:
+                  <div>English: {pokemon.name.english}</div>
+                  <div>Japanese: {pokemon.name.japanese}</div>
+                  <div>Chinese: {pokemon.name.chinese}</div>
+                  <div>French: {pokemon.name.french}</div>
+                </div>
+                <div>Type: {pokemon.type.join(", ")}</div>
+                <div>
+                  Base Status:
+                  <ul>
+                    {Object.entries(pokemon.base).map(([key, value]) => (
+                      <li key={key}>
+                        {key}: {value}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-                  </Link>
+          </Link>
         ))
       ) : (
         <div>Loading...</div>
