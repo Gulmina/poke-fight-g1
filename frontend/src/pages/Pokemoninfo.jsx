@@ -34,7 +34,7 @@ const PokemonInfo = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col bg-gray-300 text-center">
       <div>
         {pokemonData ? (
           <div>

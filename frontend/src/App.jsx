@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 
 //import "semantic-ui-css/semantic.min.css";
 import FooterSocialApp from "./components/Footer.jsx";
+import Appheader from "./components/Header.jsx";
 
 import Leaderboard from "./components/Leaderboard.jsx";
 
@@ -17,7 +18,7 @@ import Leaderboard from "./components/Leaderboard.jsx";
 import { Flex, Layout } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
-  textAlign: "center",
+  textAlign: "left",
   color: "#fff",
   height: 64,
   paddingInline: 48,
@@ -26,8 +27,8 @@ const headerStyle = {
 };
 const contentStyle = {
   textAlign: "center",
-  minHeight: 420,
-  lineHeight: "120px",
+  /* minHeight: 50,
+  lineHeight: "120px", */
   color: "black",
   backgroundColor: "#fff",
 };
@@ -45,22 +46,24 @@ const footerStyle = {
 const layoutStyle = {
   borderRadius: 8,
   overflow: "hidden",
-  backgroundColor: "#4096ff",
+  backgroundColor: "#4Dffff",
 };
 
 function App() {
   return (
     <>
-      <div className="bg-gray-500 px-56 py-16">
+      <div className="bg-gray-500 px-56 py-20  min-h-screen">
         <Flex gap="middle" wrap>
           <Layout style={layoutStyle}>
             <Header style={headerStyle}>
-              <Home />
+              <Appheader />
             </Header>
             <Content style={contentStyle}>
+              
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/pokemon" element={<Allpokemon />} />
+                <Route path="/pokemon/game/leaderboard" element={<Leaderboard />} />
                 <Route path="/pokemon/:id" element={<Singlepokemon />} />
                 <Route path="/pokemon/:id/:info" element={<Pokemoninfo />} />
                 {/*  <Route path="/pokemon/playerselect" element={<Player />} /> */}

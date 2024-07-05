@@ -7,7 +7,7 @@ const gameSchema = new mongoose.Schema({
   },
   winner: { type: String, required: true },
   loser: { type: String, required: true },
-  games: { type: Number, required: true },
+  games: { type: Number, required: false },
   date: { type: Date, default: Date.now },
 });
 

@@ -22,6 +22,6 @@ const pokemonschema = mongoose.Schema({
   },
 });
 
-const UserModel = mongoose.model("Pokemondata", pokemonschema);
+const Pokemondata = mongoose.model("Pokemondata", pokemonschema);
 
-export default UserModel;
+export default Pokemondata;

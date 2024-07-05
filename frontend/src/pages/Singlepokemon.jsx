@@ -26,9 +26,8 @@ const Singlepokemon = () => {
   }, []);
   console.log(pokemonId);
   return (
-    <div>
-      <div>
-        <div>
+    
+        <div className="bg-gray-300 text-center border">
           <h1>Single Pokemon Data</h1>
           <p>
             <strong>ID:</strong> {pokemonId.id}
@@ -54,8 +53,7 @@ const Singlepokemon = () => {
             <strong>Type:</strong> {pokemonId?.type}
           </p>
         </div>
-      </div>
-    </div>
+     
   );
 };
 
