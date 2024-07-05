@@ -18,7 +18,7 @@ import Lb from "./components/Leaderboard.jsx";
 import FooterSocialApp from "./components/Footer.jsx";
 import Appheader from "./components/Header.jsx";
 
-import Leaderboard from "./components/Leaderboard.jsx";
+import Card from "./components/Card.jsx";
 ///inetrface//
 
 import { Flex, Layout } from "antd";
@@ -99,6 +99,7 @@ function App() {
                   path="/pokemon/players/:id/:id/game"
                   element={<Game pokemonId={pokemonId} />}
                 />
+                <Route path="/pokemon/cards" element={<Card />} />
                 <Route path="/pokemon/players" element={<Playerselect />} />
                 <Route path="/pokemon/game/leaderboard" element={<Lb />} />
                 <Route path="/*" element={<div>Error</div>} />
