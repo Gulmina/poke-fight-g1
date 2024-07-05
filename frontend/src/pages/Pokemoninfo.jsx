@@ -3,8 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import App from "../App";
 
-const Pokemoninfo = () => {
-  const [pokemonData, setPokemonData] = useState([]);
+const Pokemoninfo = ({pokemonData, setPokemonData}) => {
   const [error, setError] = useState(null);
 
   const { id } = useParams();

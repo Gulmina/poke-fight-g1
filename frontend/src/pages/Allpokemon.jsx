@@ -1,15 +1,16 @@
+import {Link} from 'react-router-dom'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function AllPokemon() {
-  const [pokemonData, setPokemonData] = useState([]);
+function AllPokemon({allData, setAllData}) {
+  // const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:8000/pokemon")
       .then((res) => {
-        console.log(res);
-        setPokemonData(res.data);
+        // console.log(res);
+        setAllData(res.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -21,23 +22,25 @@ function AllPokemon() {
       <div className="font-bold text-4xl pt-8 text-orange-300">
         Pokemon List
       </div>
-      {pokemonData.length > 0 ? (
-        pokemonData.map((data) => (
-          <div key={data.id} className="bg-slate-300 m-10 p-10 rounded-2xl">
+      {allData.length > 0 ? (
+        allData.map((pokemon) => (
+          <Link to={`/pokemon/${pokemon.id}`}>
+
+          <div key={pokemon.id} className="bg-slate-300 m-10 p-10 rounded-2xl">
             {/* <div>ID: {data.id}</div> */}
             <div className="flex justify-between">
               <div className="flex-col">
                 Name:
-                <div>English: {data.name.english}</div>
-                <div>Japanese: {data.name.japanese}</div>
-                <div>Chinese: {data.name.chinese}</div>
-                <div>French: {data.name.french}</div>
+                <div>English: {pokemon.name.english}</div>
+                <div>Japanese: {pokemon.name.japanese}</div>
+                <div>Chinese: {pokemon.name.chinese}</div>
+                <div>French: {pokemon.name.french}</div>
               </div>
-              <div>Type: {data.type.join(", ")}</div>
+              <div>Type: {pokemon.type.join(", ")}</div>
               <div>
                 Base Status:
                 <ul>
-                  {Object.entries(data.base).map(([key, value]) => (
+                  {Object.entries(pokemon.base).map(([key, value]) => (
                     <li key={key}>
                       {key}: {value}
                     </li>
@@ -46,6 +49,7 @@ function AllPokemon() {
               </div>
             </div>
           </div>
+                  </Link>
         ))
       ) : (
         <div>Loading...</div>
