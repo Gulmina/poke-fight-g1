@@ -27,9 +27,9 @@ const Singlepokemon = () => {
   console.log(pokemonId);
   return (
     <div>
-      <div className="flex justify-center items-center container-single">
-        <div className="bg-sky-500/100 p-4 rounded-lg">
-          <h1 className="text-2xl font-bold">Single Pokemon Data</h1>
+      <div>
+        <div>
+          <h1>Single Pokemon Data</h1>
           <p>
             <strong>ID:</strong> {pokemonId.id}
           </p>

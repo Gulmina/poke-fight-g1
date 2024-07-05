@@ -2,12 +2,16 @@ import { Button } from "semantic-ui-react";
 
 const Footer = () => {
   return (
-    <div>
-      <Button circular color="facebook" icon="facebook" />
-      <Button circular color="twitter" icon="twitter" />
-      <Button circular color="linkedin" icon="linkedin" />
-      <Button circular color="google plus" icon="google plus" />
-    </div>
+    <footer>
+      <p>
+        <strong>Wanna know more about it</strong> Click below!!
+      </p>
+      <p>
+        <a href="https://github.com/Gulmina/poke-fight-g1">
+          Link to GitHub repo
+        </a>
+      </p>
+    </footer>
   );
 };
 
