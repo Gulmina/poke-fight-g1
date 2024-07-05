@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import App from "../App";
+import Pokemondata from "../../../backend/models/pokemonModel";
 
 const Pokemoninfo = ({pokemonData, setPokemonData}) => {
   const [error, setError] = useState(null);
@@ -12,7 +13,9 @@ const Pokemoninfo = ({pokemonData, setPokemonData}) => {
 
   const handleFetch = async () => {
     try {
+
       const res = await axios.get(`http://localhost:8000/pokemon/${id}/${info}`);
+
       console.log(res.data);
       setPokemonData(res.data);
     } catch (error) {
@@ -30,15 +33,19 @@ const Pokemoninfo = ({pokemonData, setPokemonData}) => {
   };
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col bg-gray-300 text-center">
       <div>
         {pokemonData ? (
           <div>
-          {pokemonData &&
-              Object.values(pokemonData)?.map((item, index) => (
-                <li key={index}> {item} </li>
-              ))}
-            {/* Add more details here */}
+
+            <p>
+              <strong>Pokemon {info} :</strong>
+              {pokemonData &&
+                Object.entries(pokemonData)?.map((item, index) => (
+                  <li key={index}>{item} </li>
+                ))}
+            </p>
+
           </div>
         ) : (
           <p>Loading Pokémon data...</p>

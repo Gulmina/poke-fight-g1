@@ -23,10 +23,11 @@ const Singlepokemon = ({pokemonId, setpokemonId}) => {
     getpokemondata();
   }, []);
   return (
-    <div>
-      <div className="text-center justify-center items-center container-single">
-        <div className="bg-sky-500/100 p-4 rounded-lg">
-          <h1 className="text-2xl font-bold">Single Pokemon Data</h1>
+
+    
+        <div className="bg-gray-300 text-center border">
+          <h1>Single Pokemon Data</h1>
+
           <p>
             <strong>ID:</strong> {pokemonId.id}
           </p>
@@ -51,6 +52,7 @@ const Singlepokemon = ({pokemonId, setpokemonId}) => {
             <strong>Type:</strong> {pokemonId.id}
           </p>
         </div>
+
       <div className=" justify-center items-center mt-5">
 
 <Link to={`/pokemon/game`}>
@@ -66,6 +68,7 @@ const Singlepokemon = ({pokemonId, setpokemonId}) => {
       </div>
       </div>
     </div>
+
   );
 };
 

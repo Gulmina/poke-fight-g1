@@ -18,7 +18,7 @@ function AllPokemon({allData, setAllData}) {
   }, []);
 
   return (
-    <div className="bg-gray-500 text-center">
+    <div className="bg-gray-300 text-center">
       <div className="font-bold text-4xl pt-8 text-orange-300">
         Pokemon List
       </div>
