@@ -6,6 +6,8 @@ import Singlepokemon from "./pages/Singlepokemon.jsx";
 import Pokemoninfo from "./pages/Pokemoninfo";
 import Game from "./pages/Game.jsx";
 import Playerselect from "./pages/Playerselect.jsx";
+import Lb from "./pages/Leaderboard.jsx";
+
 
 /* import Player from "./pages/Player.jsx"; */
 
@@ -25,6 +27,7 @@ function App() {
         <Route path="/pokemon/:id/:info" element={<Pokemoninfo pokemonData={pokemonData} setPokemonData={setPokemonData} />} />
          <Route path="/pokemon/game" element={<Game pokemonId={pokemonId} />} />
          <Route path="/pokemon/players" element={<Playerselect />} />
+         <Route path="/pokemon/game/leaderboard" element={<Lb />} />
         <Route path="/*" element={<div>Error</div>} />
       </Routes>
     </>
