@@ -1,18 +1,16 @@
-import {useState} from 'react'
+import { useState } from "react";
 import "./index.css";
 
 import Home from "./pages/Home";
 import Allpokemon from "./pages/Allpokemon";
 import Singlepokemon from "./pages/Singlepokemon.jsx";
 
-
 import { Routes, Route } from "react-router-dom";
 
 import Pokemoninfo from "./pages/Pokemoninfo";
 import Game from "./pages/Game.jsx";
 import Playerselect from "./pages/Playerselect.jsx";
-import Lb from "./pages/Leaderboard.jsx";
-
+import Lb from "./components/Leaderboard.jsx";
 
 /* import Player from "./pages/Player.jsx"; */
 
@@ -21,7 +19,6 @@ import FooterSocialApp from "./components/Footer.jsx";
 import Appheader from "./components/Header.jsx";
 
 import Leaderboard from "./components/Leaderboard.jsx";
-
 ///inetrface//
 
 import { Flex, Layout } from "antd";
@@ -65,7 +62,6 @@ function App() {
 
   return (
     <>
-
       <div className="bg-gray-500 px-56 py-20  min-h-screen">
         <Flex gap="middle" wrap>
           <Layout style={layoutStyle}>
@@ -73,14 +69,38 @@ function App() {
               <Appheader />
             </Header>
             <Content style={contentStyle}>
-              
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/pokemon" element={<Allpokemon />} />
-                <Route path="/pokemon/game/leaderboard" element={<Leaderboard />} />
-                <Route path="/pokemon/:id" element={<Singlepokemon />} />
-                <Route path="/pokemon/:id/:info" element={<Pokemoninfo />} />
-                {/*  <Route path="/pokemon/playerselect" element={<Player />} /> */}
+                <Route
+                  path="/pokemon"
+                  element={
+                    <Allpokemon allData={allData} setAllData={setAllData} />
+                  }
+                />
+                <Route
+                  path="/pokemon/:id"
+                  element={
+                    <Singlepokemon
+                      setpokemonId={setpokemonId}
+                      pokemonId={pokemonId}
+                    />
+                  }
+                />
+                <Route
+                  path="/pokemon/:id/:info"
+                  element={
+                    <Pokemoninfo
+                      pokemonData={pokemonData}
+                      setPokemonData={setPokemonData}
+                    />
+                  }
+                />
+                <Route
+                  path="/pokemon/game"
+                  element={<Game pokemonId={pokemonId} />}
+                />
+                <Route path="/pokemon/players" element={<Playerselect />} />
+                <Route path="/pokemon/game/leaderboard" element={<Lb />} />
                 <Route path="/*" element={<div>Error</div>} />
               </Routes>
             </Content>
@@ -90,7 +110,6 @@ function App() {
           </Layout>
         </Flex>
       </div>
-
     </>
   );
 }
