@@ -1,3 +1,4 @@
+
 import ball from "../assets/Ball.png";
 import mineball from "../assets/MineBall.png";
 import { Link } from "react-router-dom";
@@ -22,6 +23,7 @@ const Home = () => {
   </div>
   
 </div>;
+
 };
 
 export default Home;

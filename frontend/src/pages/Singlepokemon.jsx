@@ -1,34 +1,33 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import {  useEffect } from "react";
 import { useParams } from "react-router-dom";
+import startBattle from "./Startbattle.jsx";
+import { Link } from "react-router-dom";
 //import backgroundimg from "../components/Background.jsx";
 
-const Singlepokemon = () => {
-  const [pokemonId, setpokemonId] = useState([]);
+const Singlepokemon = ({pokemonId, setpokemonId}) => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   const getpokemondata = async () => {
     try {
       const response = await axios.get(`http://localhost:8000/pokemon/${id}`);
-      console.log(response.data);
-
       setpokemonId(response.data);
     } catch (error) {
       console.error("Error", error);
     }
   };
 
-  //const pokemonbase = pokemonId.base;
 
   useEffect(() => {
     getpokemondata();
   }, []);
-  console.log(pokemonId);
   return (
+
     
         <div className="bg-gray-300 text-center border">
           <h1>Single Pokemon Data</h1>
+
           <p>
             <strong>ID:</strong> {pokemonId.id}
           </p>
@@ -50,10 +49,26 @@ const Singlepokemon = () => {
               ))}
           </p>
           <p>
-            <strong>Type:</strong> {pokemonId?.type}
+            <strong>Type:</strong> {pokemonId.id}
           </p>
         </div>
-     
+
+      <div className=" justify-center items-center mt-5">
+
+<Link to={`/pokemon/game`}>
+        {/* <a href="http://localhost:5173/pokemon/game"> */}
+          <button
+            className="handleClick bg-red-700 text-white rounded w-auto p-2"
+
+            >
+            Go to Arena
+          </button>
+        {/* </a> */}
+            </Link>
+      </div>
+      </div>
+    </div>
+
   );
 };
 

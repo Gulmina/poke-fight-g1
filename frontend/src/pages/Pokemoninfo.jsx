@@ -4,8 +4,7 @@ import axios from "axios";
 import App from "../App";
 import Pokemondata from "../../../backend/models/pokemonModel";
 
-const PokemonInfo = () => {
-  const [pokemonData, setPokemonData] = useState([]);
+const Pokemoninfo = ({pokemonData, setPokemonData}) => {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
@@ -14,9 +13,9 @@ const PokemonInfo = () => {
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:8000/pokemon/${id}/${info}`
-      );
+
+      const res = await axios.get(`http://localhost:8000/pokemon/${id}/${info}`);
+
       console.log(res.data);
       setPokemonData(res.data);
     } catch (error) {
@@ -38,6 +37,7 @@ const PokemonInfo = () => {
       <div>
         {pokemonData ? (
           <div>
+
             <p>
               <strong>Pokemon {info} :</strong>
               {pokemonData &&
@@ -45,6 +45,7 @@ const PokemonInfo = () => {
                   <li key={index}>{item} </li>
                 ))}
             </p>
+
           </div>
         ) : (
           <p>Loading Pokémon data...</p>
@@ -55,4 +56,4 @@ const PokemonInfo = () => {
   );
 };
 
-export default PokemonInfo;
+export default Pokemoninfo;

@@ -1,10 +1,19 @@
+import {useState} from 'react'
 import "./index.css";
 
 import Home from "./pages/Home";
 import Allpokemon from "./pages/Allpokemon";
 import Singlepokemon from "./pages/Singlepokemon.jsx";
-import Pokemoninfo from "./pages/Pokemoninfo.jsx";
+
+
 import { Routes, Route } from "react-router-dom";
+
+import Pokemoninfo from "./pages/Pokemoninfo";
+import Game from "./pages/Game.jsx";
+import Playerselect from "./pages/Playerselect.jsx";
+import Lb from "./pages/Leaderboard.jsx";
+
+
 /* import Player from "./pages/Player.jsx"; */
 
 //import "semantic-ui-css/semantic.min.css";
@@ -50,8 +59,13 @@ const layoutStyle = {
 };
 
 function App() {
+  const [pokemonId, setpokemonId] = useState([]);
+  const [pokemonData, setPokemonData] = useState([]);
+  const [allData, setAllData] = useState([]);
+
   return (
     <>
+
       <div className="bg-gray-500 px-56 py-20  min-h-screen">
         <Flex gap="middle" wrap>
           <Layout style={layoutStyle}>
@@ -76,6 +90,7 @@ function App() {
           </Layout>
         </Flex>
       </div>
+
     </>
   );
 }
