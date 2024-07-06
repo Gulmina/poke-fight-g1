@@ -4,12 +4,14 @@ import axios from "axios";
 import { Card } from "antd";
 const { Meta } = Card;
 
+import img from "../components/Card.jsx";
+
 function AllPokemon({ allData, setAllData }) {
   const playerId = useParams();
 
   // const [data, setData] = useState([]);
   //console.log(playerId);
-
+  const [pokemonpic, setPokemonpic] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8000/pokemon")
@@ -21,6 +23,20 @@ function AllPokemon({ allData, setAllData }) {
         console.error("Error fetching data:", error);
       });
   }, []);
+  const getpokemonpic = async () => {
+    try {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon`);
+      const newdata = response.data.results;
+      const pokemonurl = newdata.map((pokemon) => pokemon.url);
+      setPokemonpic(pokemonurl);
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+
+  useEffect(() => {
+    getpokemonpic();
+  }, []);
 
   // const img = allData.map((e) => e.id);
   return (
@@ -29,6 +45,7 @@ function AllPokemon({ allData, setAllData }) {
         <strong className="text-black"> {playerId.id} </strong>
         <p>pick your favourite Pokemon for the battle</p>
       </div>
+
       {allData.length > 0 ? (
         allData.map((pokemon) => (
           <div key={pokemon.id}>
@@ -40,7 +57,12 @@ function AllPokemon({ allData, setAllData }) {
                     style={{
                       width: 240,
                     }}
-                    cover={<img src={"x"} alt="pic" />}
+                    cover={
+                      <img
+                        src={pokemonpic.map((e) => e.id)}
+                        alt={pokemon.name}
+                      />
+                    }
                   >
                     <div>
                       <h3>

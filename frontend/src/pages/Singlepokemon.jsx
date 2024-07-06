@@ -24,7 +24,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
     getpokemondata();
   }, []);
 
-  const pokemonimg = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${id}.svg`;
+  const pokemonimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 
   return (
     <>
