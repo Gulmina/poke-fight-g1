@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./index.css";
+import "././index.css"
 
 import Home from "./pages/Home";
 import Allpokemon from "./pages/Allpokemon";
@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import Pokemoninfo from "./pages/Pokemoninfo";
 import Game from "./pages/Game.jsx";
 import Playerselect from "./pages/Playerselect.jsx";
+import Startbattle from "./pages/Startbattle.jsx"
 import Lb from "./components/Leaderboard.jsx";
 
 /* import Player from "./pages/Player.jsx"; */
@@ -59,6 +60,8 @@ function App() {
   const [pokemonId, setpokemonId] = useState([]);
   const [pokemonData, setPokemonData] = useState([]);
   const [allData, setAllData] = useState([]);
+  const [randomPokemonPC, setrandomPokemonPC] = useState([]);
+  const [showDataPC, setShowDataPC] = useState(false);
 
   return (
     <>
@@ -66,6 +69,9 @@ function App() {
         <Flex gap="middle" wrap>
           <Layout style={layoutStyle}>
             <Header style={headerStyle}>
+              <div className="App">
+
+              </div>
               <Appheader />
             </Header>
             <Content style={contentStyle}>
@@ -96,12 +102,18 @@ function App() {
                   }
                 />
                 <Route
-                  path="/pokemon/players/:id/:id/game"
+
+                  path="/pokemon/game"
+                  element={<Game pokemonId={pokemonId} randomPokemonPC={randomPokemonPC} setrandomPokemonPC={setrandomPokemonPC} />}
+
+                 path="/pokemon/players/:id/:id/game"
                   element={<Game pokemonId={pokemonId} />}
+
                 />
                 <Route path="/pokemon/cards" element={<Card />} />
                 <Route path="/pokemon/players" element={<Playerselect />} />
                 <Route path="/pokemon/game/leaderboard" element={<Lb />} />
+                <Route path="/pokemon/battle" element={<Startbattle randomPokemonPC={randomPokemonPC} setrandomPokemonPC={setrandomPokemonPC} pokemonId={pokemonId}/>} />
                 <Route path="/*" element={<div>Error</div>} />
               </Routes>
             </Content>

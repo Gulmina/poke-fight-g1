@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import startBattle from "./Startbattle.jsx";
 import { Link } from "react-router-dom";
 //import backgroundimg from "../components/Background.jsx";
 import { Card } from "antd";
