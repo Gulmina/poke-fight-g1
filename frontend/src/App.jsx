@@ -19,7 +19,7 @@ import Lb from "./components/Leaderboard.jsx";
 import FooterSocialApp from "./components/Footer.jsx";
 import Appheader from "./components/Header.jsx";
 
-import Leaderboard from "./components/Leaderboard.jsx";
+import Card from "./components/Card.jsx";
 ///inetrface//
 
 import { Flex, Layout } from "antd";
@@ -78,13 +78,13 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
-                  path="/pokemon"
+                  path="/pokemon/players/:id"
                   element={
                     <Allpokemon allData={allData} setAllData={setAllData} />
                   }
                 />
                 <Route
-                  path="/pokemon/:id"
+                  path="/pokemon/players/:id/:id"
                   element={
                     <Singlepokemon
                       setpokemonId={setpokemonId}
@@ -102,9 +102,15 @@ function App() {
                   }
                 />
                 <Route
+
                   path="/pokemon/game"
                   element={<Game pokemonId={pokemonId} randomPokemonPC={randomPokemonPC} setrandomPokemonPC={setrandomPokemonPC} />}
+
+                 path="/pokemon/players/:id/:id/game"
+                  element={<Game pokemonId={pokemonId} />}
+
                 />
+                <Route path="/pokemon/cards" element={<Card />} />
                 <Route path="/pokemon/players" element={<Playerselect />} />
                 <Route path="/pokemon/game/leaderboard" element={<Lb />} />
                 <Route path="/pokemon/battle" element={<Startbattle randomPokemonPC={randomPokemonPC} setrandomPokemonPC={setrandomPokemonPC} pokemonId={pokemonId}/>} />

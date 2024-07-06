@@ -67,7 +67,7 @@ const Playerselect = () => {
               <div>
                 <ul className="" key={trainer}>
                   <li className="text-white bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 text-center">
-                    <Link to={`/pokemon`}>
+                    <Link to={`/pokemon/players/${trainer}`}>
                       <button key={trainer} onClick={selectPlayer}>
                         {/*  {* Avatar added *} */}
                         <Space size={16} wrap>
