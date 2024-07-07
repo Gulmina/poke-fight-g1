@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "@blueprintjs/table/lib/css/table.css";
-
-import { Column, Table } from "@blueprintjs/table";
+import { Cell, Column, Table } from "@blueprintjs/table";
 
 const Leaderboard = () => {
   const [games, setGames] = useState([]);
@@ -17,21 +16,19 @@ const Leaderboard = () => {
 
   return (
     <div className="border-solid border-2 border-indigo-600 p-8">
-      <h1 className="text-center text-lg">High Scorer Borad</h1>
-      <ul>
+      <h1 className="text-center text-4xl p-6">Scores Borad</h1>
+      <ul className="bg-slate-50 grid grid-cols-4">
         {games.map((game) => (
-          <li key={game._id}>
-            {game.name} : {game.winner} defeated {game.loser} lost in{" "}
-            {game.games} games.
+          <li
+            key={game._id}
+            className="border-solid border-2 border-indigo-200 rounded-md p-2 text-lg "
+          >
+            <strong>{game.name}</strong> <li>Winns : {game.winner}</li>
+            <li>Defeated : {game.loser}</li>
+            {/* {game.games} games. */}
           </li>
         ))}
       </ul>
-
-      {/*  {games.map((game) => (
-        <Table numRows={1}>
-          <Column name={game.name} />
-        </Table>
-      ))} */}
     </div>
   );
 };

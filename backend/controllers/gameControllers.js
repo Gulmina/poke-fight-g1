@@ -30,10 +30,55 @@ export const saveGame = async (req, res) => {
   }
 };
 
-export const GameInfo = async (req, res) => {
+export const totalwinner = async (req, res) => {
   try {
-    const games = await Games.find().sort({ date: -1 });
+    const result = await Games.aggregate([
+      {
+        $group: {
+          _id: null, // Group by null to get the sum of all documents
+          totalSum: { $sum: "$winner" },
+        },
+      },
+    ]);
+
+    if (result.length > 0) {
+      console.log(`Total Sum: ${result[0].totalSum}`);
+    } else {
+      console.log("No data found");
+    }
+  } catch (error) {
+    console.error("Error getting sum:", error);
+  }
+};
+
+export const totallost = async (req, res) => {
+  try {
+    const result = await Games.aggregate([
+      {
+        $group: {
+          _id: null, // Group by null to get the sum of all documents
+          totalSum: { $sum: "$loser" },
+        },
+      },
+    ]);
+
+    if (result.length > 0) {
+      console.log(`Total Sum: ${result[0].totalSum}`);
+    } else {
+      console.log("No data found");
+    }
+  } catch (error) {
+    console.error("Error getting sum:", error);
+  }
+};
+
+export const GameInfo = async (req, res) => {
+  const wins = totalwinner();
+  const lost = totallost();
+  try {
+    const games = await Games.find().sort({ data: -1 });
     res.json(games);
+    console.log(games);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

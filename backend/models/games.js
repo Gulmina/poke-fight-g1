@@ -5,9 +5,9 @@ const gameSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  winner: { type: String, required: true },
-  loser: { type: String, required: true },
-  games: { type: Number, required: false },
+  winner: { type: Number, required: true },
+  loser: { type: Number, required: true },
+  games: { type: Number, required: true },
   date: { type: Date, default: Date.now },
 });
 
