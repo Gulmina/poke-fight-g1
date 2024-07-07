@@ -56,7 +56,11 @@ function AllPokemon({ allData, setAllData }) {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+
   }, []); */
+
+
+
 
   // const img = allData.map((e) => e.id);
   return (

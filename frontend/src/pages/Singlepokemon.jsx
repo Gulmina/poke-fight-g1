@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import startBattle from "./Startbattle.jsx";
 import { Link } from "react-router-dom";
 //import backgroundimg from "../components/Background.jsx";
 import { Card } from "antd";
@@ -67,7 +66,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
       </div>
 
       <div className=" justify-center items-center mt-5">
-        <Link to={`/pokemon/players/:id/:${id}/game`}>
+        <Link to={`/pokemon/game`}>
           {/* <a href="http://localhost:5173/pokemon/game"> */}
           <button className="handleClick bg-red-700 text-white rounded w-auto p-2">
             Go to Arena
