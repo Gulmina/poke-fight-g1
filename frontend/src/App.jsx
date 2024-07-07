@@ -89,7 +89,7 @@ function App() {
                   }
                 /> */}
                 <Route
-                  path="/pokemon/players/:id/:id/game"
+                  path="/pokemon/players/:param1/:param2/game"
                   element={
                     <Game
                       pokemonId={pokemonId}
