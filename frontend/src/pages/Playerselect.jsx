@@ -28,7 +28,7 @@ const Playerselect = () => {
 
   return (
     <>
-      <Head />
+      <Head player={null} />
       <div className="Game">
         <div className="flex bg-blue-200 p-8 w-full">
           <div className="h-screen bg-white p-6 rounded-lg w-full">

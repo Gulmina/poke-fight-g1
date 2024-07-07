@@ -65,8 +65,8 @@ function AllPokemon({ allData, setAllData }) {
       <Head player={playerId.id} />
       <div className="bg-gray-300 text-center">
         <div className="font-bold text-4xl pt-8 text-orange-300">
-          <strong className="text-black"> {playerId.id} </strong>
-          <p>pick your favourite Pokemon for the battle</p>
+          {/*  <strong className="text-black"> {playerId.id} </strong> */}
+          <p>Pick your favourite Pokemon for the battle</p>
         </div>
         <div>
           {pokemonpic.map((pokemon) => (
