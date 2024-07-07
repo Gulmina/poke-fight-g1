@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import { Card } from "antd";
 
 const Singlepokemon = ({ pokemonId, setpokemonId }) => {
-  const { id } = useParams();
+  var { id, player } = useParams();
   const [pokemonpic, setPokemonpic] = useState([]);
   console.log(id);
+  console.log(player);
 
   const getpokemondata = async () => {
     try {
