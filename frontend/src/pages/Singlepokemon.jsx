@@ -65,7 +65,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
       </div>
 
       <div className=" justify-center items-center mt-5">
-        <Link to={`/pokemon/players/:id/:${id}/game`}>
+        <Link to={`/pokemon/game`}>
           {/* <a href="http://localhost:5173/pokemon/game"> */}
           <button className="handleClick bg-red-700 text-white rounded w-auto p-2">
             Go to Arena

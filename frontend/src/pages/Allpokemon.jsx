@@ -25,7 +25,7 @@ function AllPokemon({ allData, setAllData }) {
   }, []);
   const getpokemonpic = async () => {
     try {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon`);
+      const response = await axios.get(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`);
       const newdata = response.data.results;
       const pokemonurl = newdata.map((pokemon) => pokemon.url);
       setPokemonpic(pokemonurl);
@@ -37,6 +37,8 @@ function AllPokemon({ allData, setAllData }) {
   useEffect(() => {
     getpokemonpic();
   }, []);
+
+
 
   // const img = allData.map((e) => e.id);
   return (

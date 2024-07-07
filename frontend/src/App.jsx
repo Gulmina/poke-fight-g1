@@ -92,7 +92,7 @@ function App() {
                     />
                   }
                 />
-                <Route
+                {/* <Route
                   path="/pokemon/:id/:info"
                   element={
                     <Pokemoninfo
@@ -100,14 +100,14 @@ function App() {
                       setPokemonData={setPokemonData}
                     />
                   }
-                />
+                /> */}
                 <Route
 
                   path="/pokemon/game"
                   element={<Game pokemonId={pokemonId} randomPokemonPC={randomPokemonPC} setrandomPokemonPC={setrandomPokemonPC} />}
 
-                 path="/pokemon/players/:id/:id/game"
-                  element={<Game pokemonId={pokemonId} />}
+                //  path="/pokemon/players/:id/:id/game"
+                //   element={<Game pokemonId={pokemonId} />}
 
                 />
                 <Route path="/pokemon/cards" element={<Card />} />
