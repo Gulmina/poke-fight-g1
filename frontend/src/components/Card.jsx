@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const Card = () => {
+const Cards = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +8,9 @@ const Card = () => {
   useEffect(() => {
     const fetchPokemonData = async () => {
       try {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+        const response = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=10"
+        );
         const data = await response.json();
         const pokemonPromises = data.results.map(async (pokemon) => {
           const pokemonResponse = await fetch(pokemon.url);
@@ -34,11 +35,11 @@ const Card = () => {
   if (error) {
     return <div>{error}</div>;
   }
+
   return (
     <div>
       {pokemonData.map((pokemon) => (
         <div key={pokemon.id}>
-          <h3>{pokemon.name}</h3>
           {pokemon.sprites && pokemon.sprites.front_default ? (
             <img src={pokemon.sprites.front_default} alt={pokemon.name} />
           ) : (
@@ -50,4 +51,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default Cards;
