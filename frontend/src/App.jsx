@@ -59,7 +59,6 @@ function App() {
   const [pokemonId, setpokemonId] = useState([]);
   const [pokemonData, setPokemonData] = useState([]);
   const [allData, setAllData] = useState([]);
-  const [player, setPlayer] = useState("");
 
   return (
     <>
@@ -101,12 +100,7 @@ function App() {
                   element={<Game pokemonId={pokemonId} />}
                 />
                 <Route path="/pokemon/cards" element={<Card />} />
-                <Route
-                  path="/pokemon/players"
-                  element={
-                    <Playerselect player={player} setAllData={setPlayer} />
-                  }
-                />
+                <Route path="/pokemon/players" element={<Playerselect />} />
                 <Route path="/pokemon/game/leaderboard" element={<Lb />} />
                 <Route path="/*" element={<div>Error</div>} />
               </Routes>
