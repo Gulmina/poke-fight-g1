@@ -2,7 +2,9 @@ import React from "react";
 import axios from "axios";
 
 const Leaderboard = () => {
+
   const data = new FormData();
+
   formData.append("first_name", profile.firstName);
   formData.append("last_name", profile.lastName);
   formData.append("email", profile.email);
@@ -16,7 +18,9 @@ const Leaderboard = () => {
     .then((json) => {
       // handle success
     })
+
     .catch((error) => error);
+
   return (
     <>
       <h1>This is Leaderboard page!</h1>
