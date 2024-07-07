@@ -20,6 +20,9 @@ app.use(express.json());
 ///Sending and retrieving data from data base//
 app.use("/game/gameinfo", gameRoutes);
 app.use("/game/savegame", gameRoutes);
+app.use("/game/totalwinner/:id", gameRoutes);
+app.use("/game/totalloser", gameRoutes);
+app.use("/game/delete", gameRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

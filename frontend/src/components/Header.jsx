@@ -29,9 +29,9 @@ const Header = ({ player }) => {
       >
         <div className="justify-self-start">
           <Link to={`/`}>
-            <button className=" m-2 text-xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl w-10 h-12 p-1">
+            <button className=" m-2 text-xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl w-15 h-12 p-1">
               <img
-                width="30px"
+                width="40px"
                 hieght="30px"
                 className="p-1"
                 src={home}
@@ -41,15 +41,19 @@ const Header = ({ player }) => {
           </Link>
         </div>
         <div className="justify-self-end ">
-          <Space size={16} wrap>
-            <Avatar
-              style={{
-                backgroundColor: "#87d068",
-              }}
-              icon={<UserOutlined />}
-            />
-            {player}
-          </Space>
+          {player === null ? (
+            <h1>{player}</h1>
+          ) : (
+            <Space size={16} wrap>
+              <Avatar
+                style={{
+                  backgroundColor: "#87d068",
+                }}
+                icon={<UserOutlined />}
+              />
+              {player}
+            </Space>
+          )}
         </div>
       </div>
       {/* </Layout>
@@ -58,4 +62,7 @@ const Header = ({ player }) => {
   );
 };
 
+{
+  /*  */
+}
 export default Header;

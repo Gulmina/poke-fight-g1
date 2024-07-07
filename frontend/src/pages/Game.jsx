@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Head from "../components/Header.jsx";
+import { Card } from "antd";
 
 const Game = ({
   pokemonId,
@@ -30,6 +33,11 @@ const Game = ({
   useEffect(() => {
     handleFetch();
   }, []);
+  var { param1, param2 } = useParams();
+  const playername = param1;
+  console.log(playername);
+
+  const pokemonimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${param2}.png`;
 
   const handleClickPC = () => {
     setShowDataPC((prev) => !prev);
@@ -144,156 +152,176 @@ const Game = ({
     }
   };
 
-  
-
   return (
     // Container code
-    <div className="Game">
-      <div className="w-auto bg-blue-200 p-8">
-        <div className="h-auto bg-white p-6 rounded-lg overscroll-auto">
-          <div className="flex items-center space-x-4 mb-4"></div>
-          <div className="flex flex-row">
-            <div>
-              <img
-                src="../src/assets/Pokemon-Logo-PNG-Image-File-3440649988.png"
-                alt="pokemon logo"
-                width={100}
-              />
-            </div>
-            <div>
-              <h1 className="text-slate-400 font-black text-5xl ml-4">
-                Battle Game
-              </h1>
-            </div>
-          </div>
 
-          <button
-            className="mb-4 handleClick border-red-500 bg-yellow-500 text-white mt-5 rounded w-auto p-5"
-            onClick={handleClickPC}
-          >
-            Click to Reveal PC Selection!
-          </button>
-          {/* PC & Trainer View*/}
-          <div className="mb-4 space-y-2 rounded bg-blue-500 p-10">
-            <div>
-              <h3 className="mb-6 text-3xl text-white text-center">
-                Pokemon in Battle!
-              </h3>
+    <>
+      <Head player={playername} />
+      <div className="Game">
+        <div className="w-auto bg-blue-200 p-8">
+          <div className="h-auto bg-white p-6 rounded-lg overscroll-auto">
+            <div className="flex items-center space-x-4 mb-4"></div>
+            <div className="flex flex-row">
               <div>
-                <div className="flex justify-evenly">
-                  <div className="div_left">
-                    <strong className="mt-3">Trainer's pokemon:</strong>
-                    {pokemonId.base &&
-                      Object.entries(pokemonId.name)?.map((item, index) => (
-                        <li key={index}>
-                          {item[0]} : {item[1]}
-                        </li>
-                      ))}
-                    {pokemonId.base &&
-                      Object.entries(pokemonId.type)?.map((item, index) => (
-                        <li key={index}>
-                          {item[0]} : {item[1]}
-                        </li>
-                      ))}
-                    {pokemonId.base &&
-                      Object.entries(pokemonId.base)?.map((item, index) => (
-                        <li key={index}>
-                          {item[0]} : {item[1]}
-                        </li>
-                      ))}
-                  </div>
+                <img
+                  src="../src/assets/Pokemon-Logo-PNG-Image-File-3440649988.png"
+                  alt="pokemon logo"
+                  width={100}
+                />
+              </div>
+              <div>
+                <h1 className="text-slate-400 font-black text-5xl ml-4">
+                  Battle Game
+                </h1>
+              </div>
+            </div>
 
-                  <div className="div_right ml-10">
-                    <strong className="mt-3">PCs's pokemon:</strong>
+            <button
+              className="mb-4 handleClick border-red-500 bg-yellow-500 text-white mt-5 rounded w-auto p-5"
+              onClick={handleClickPC}
+            >
+              Click to Reveal PC Selection!
+            </button>
+            {/* PC & Trainer View*/}
+            <div className="mb-4 space-y-2 rounded bg-blue-500 p-10">
+              <div>
+                <h3 className="mb-6 text-3xl text-white text-center">
+                  Pokemon in Battle!
+                </h3>
+                <div>
+                  <div className="flex justify-evenly">
+                    <Card
+                      hoverable
+                      style={{
+                        width: 240,
+                      }}
+                      cover={<img src={pokemonimg} alt="pic" />}
+                    >
+                      <div className="div_left">
+                        <strong className="mt-3">{playername} pokemon:</strong>
+                        <div className="border border-slate-300 ">
+                          {pokemonId.base &&
+                            Object.entries(pokemonId.name)?.map(
+                              (item, index) => (
+                                <li key={index}>
+                                  {item[0]} : {item[1]}
+                                </li>
+                              )
+                            )}
+                          {pokemonId.base &&
+                            Object.entries(pokemonId.type)?.map(
+                              (item, index) => (
+                                <li key={index}>
+                                  {item[0]} : {item[1]}
+                                </li>
+                              )
+                            )}
+                          {pokemonId.base &&
+                            Object.entries(pokemonId.base)?.map(
+                              (item, index) => (
+                                <li key={index}>
+                                  {item[0]} : {item[1]}
+                                </li>
+                              )
+                            )}
+                        </div>
+                      </div>
+                    </Card>
 
-                    {showDataPC && (
-                      <p>
-                        PC has selected{" "}
-                        <strong>{randomPokemonPC.name.english}</strong>
-                      </p>
-                    )}
-                    {showDataPC && (
-                      <li>
-                        {randomPokemonPC.name.english} has an id of{" "}
-                        {randomPokemonPC.id}
-                      </li>
-                    )}
-                    {showDataPC && (
-                      <li>
-                        {randomPokemonPC.name.english} has a type of{" "}
-                        {randomPokemonPC.type}
-                      </li>
-                    )}
-                    {showDataPC && (
-                      <li>
-                        {randomPokemonPC.name.english}'s health is{" "}
-                        {randomPokemonPC.base.HP}
-                      </li>
-                    )}
-                    {showDataPC && (
-                      <li>
-                        {randomPokemonPC.name.english} has an attack of{" "}
-                        {randomPokemonPC.base.Attack}
-                      </li>
-                    )}
-                    {showDataPC && (
-                      <li>
-                        {randomPokemonPC.name.english} has a defense of{" "}
-                        {randomPokemonPC.base.Defense}
-                      </li>
-                    )}
-                    {showDataPC && (
-                      <li>
-                        {randomPokemonPC.name.english}'s speed is{" "}
-                        {randomPokemonPC.base.Speed}
-                      </li>
-                    )}
+                    <div className="div_right ml-10">
+                      <strong className="mt-3">PCs's pokemon:</strong>
+
+                      {showDataPC && (
+                        <p>
+                          PC has selected{" "}
+                          <strong>{randomPokemonPC.name.english}</strong>
+                        </p>
+                      )}
+                      {showDataPC && (
+                        <li>
+                          {randomPokemonPC.name.english} has an id of{" "}
+                          {randomPokemonPC.id}
+                        </li>
+                      )}
+                      {showDataPC && (
+                        <li>
+                          {randomPokemonPC.name.english} has a type of{" "}
+                          {randomPokemonPC.type}
+                        </li>
+                      )}
+                      {showDataPC && (
+                        <li>
+                          {randomPokemonPC.name.english}'s health is{" "}
+                          {randomPokemonPC.base.HP}
+                        </li>
+                      )}
+                      {showDataPC && (
+                        <li>
+                          {randomPokemonPC.name.english} has an attack of{" "}
+                          {randomPokemonPC.base.Attack}
+                        </li>
+                      )}
+                      {showDataPC && (
+                        <li>
+                          {randomPokemonPC.name.english} has a defense of{" "}
+                          {randomPokemonPC.base.Defense}
+                        </li>
+                      )}
+                      {showDataPC && (
+                        <li>
+                          {randomPokemonPC.name.english}'s speed is{" "}
+                          {randomPokemonPC.base.Speed}
+                        </li>
+                      )}
+                    </div>
                   </div>
                 </div>
+                <div></div>
               </div>
-              <div></div>
             </div>
-          </div>
 
-          {/* <button
+            {/* <button
             onClick={determineAttackOrder}
             className="handleClick bg-red-700 text-white rounded w-auto p-2"
           >
             Start Battle!
           </button> */}
-          <div className="mt-4 mb-4 space-y-2 rounded bg-blue-500 p-5">
-            <h3 className="text-left text-white"><strong>Battle Log...</strong></h3>
-            {/* Render battle log */}
-            <ul className="text-white">
-              {battleLog.map((entry, index) => (
-                <div className="h-auto bg-sky-950 mt-4 gap-5 p-6 rounded-lg overscroll-auto">
+            <div className="mt-4 mb-4 space-y-2 rounded bg-blue-500 p-5">
+              <h3 className="text-left text-white">
+                <strong>Battle Log...</strong>
+              </h3>
+              {/* Render battle log */}
+              <ul className="text-white">
+                {battleLog.map((entry, index) => (
+                  <div className="h-auto bg-sky-950 mt-4 gap-5 p-6 rounded-lg overscroll-auto">
                     <li key={index}>{entry}</li>
-                </div>
-              ))}
-            </ul>
-            {/* Button to initiate attack */}
-            {!battleInProgress && (
-              <button
-                className="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300  text-white rounded w-auto p-2"
-                onClick={() => setBattleInProgress(true)}
-              >
-                Battle!
-              </button>
-            )}
+                  </div>
+                ))}
+              </ul>
+              {/* Button to initiate attack */}
+              {!battleInProgress && (
+                <button
+                  className="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300  text-white rounded w-auto p-2"
+                  onClick={() => setBattleInProgress(true)}
+                >
+                  Battle!
+                </button>
+              )}
 
-            {/* Button to perform attack */}
-            {battleInProgress && (
-              <button
-                className="handleClick bg-red-700 hover:bg-red-600 focus:outline-none focus:ring text-white rounded w-auto p-2"
-                onClick={handleAttackClick}
-              >
-                Attack
-              </button>
-            )}
+              {/* Button to perform attack */}
+              {battleInProgress && (
+                <button
+                  className="handleClick bg-red-700 hover:bg-red-600 focus:outline-none focus:ring text-white rounded w-auto p-2"
+                  onClick={handleAttackClick}
+                >
+                  Attack
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

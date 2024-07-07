@@ -8,6 +8,8 @@ import Head from "../components/Header.jsx";
 
 function AllPokemon({ allData, setAllData }) {
   const playerId = useParams();
+  console.log(playerId.id);
+
   const [pokemonpic, setPokemonpic] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,7 +18,7 @@ function AllPokemon({ allData, setAllData }) {
     const fetchPokemonData = async () => {
       try {
         const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon?limit=10"
+          "https://pokeapi.co/api/v2/pokemon?limit=50"
         );
         const data = await response.json();
         const pokemonPromises = data.results.map(async (pokemon) => {
@@ -65,8 +67,8 @@ function AllPokemon({ allData, setAllData }) {
       <Head player={playerId.id} />
       <div className="bg-gray-300 text-center">
         <div className="font-bold text-4xl pt-8 text-orange-300">
-          <strong className="text-black"> {playerId.id} </strong>
-          <p>pick your favourite Pokemon for the battle</p>
+          {/*  <strong className="text-black"> {playerId.id} </strong> */}
+          <p>Pick your favourite Pokemon for the battle</p>
         </div>
         <div>
           {pokemonpic.map((pokemon) => (
