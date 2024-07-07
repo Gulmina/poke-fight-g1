@@ -144,8 +144,6 @@ const Game = ({
     }
   };
 
-  
-
   return (
     // Container code
     <div className="Game">
@@ -262,12 +260,14 @@ const Game = ({
             Start Battle!
           </button> */}
           <div className="mt-4 mb-4 space-y-2 rounded bg-blue-500 p-5">
-            <h3 className="text-left text-white"><strong>Battle Log...</strong></h3>
+            <h3 className="text-left text-white">
+              <strong>Battle Log...</strong>
+            </h3>
             {/* Render battle log */}
             <ul className="text-white">
               {battleLog.map((entry, index) => (
                 <div className="h-auto bg-sky-950 mt-4 gap-5 p-6 rounded-lg overscroll-auto">
-                    <li key={index}>{entry}</li>
+                  <li key={index}>{entry}</li>
                 </div>
               ))}
             </ul>

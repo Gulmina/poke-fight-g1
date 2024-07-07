@@ -8,14 +8,16 @@ import { Card } from "antd";
 import Head from "../components/Header.jsx";
 
 const Singlepokemon = ({ pokemonId, setpokemonId }) => {
-  var { id, player } = useParams();
-
-  console.log(id);
-  console.log(player);
+  var { param1, param2 } = useParams();
+  const playername = param1;
+  console.log(playername);
+  console.log(param2);
 
   const getpokemondata = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/pokemon/${id}`);
+      const response = await axios.get(
+        `http://localhost:8000/pokemon/${param2}`
+      );
       setpokemonId(response.data);
     } catch (error) {
       console.error("Error", error);
@@ -26,11 +28,11 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
     getpokemondata();
   }, []);
 
-  const pokemonimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+  const pokemonimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${param2}.png`;
 
   return (
     <>
-      <Head />
+      <Head player={playername} />
       <div className="grid grid-cols-2 p-4 justify-items-center border border-slate-300 hover:border-indigo-300  rounded-lg m-4 bg-neutral-400">
         <div>
           <Card
@@ -69,8 +71,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
       </div>
 
       <div className=" justify-center items-center mt-5">
-        <Link to={`/pokemon/players/:id/:${id}/game`}>
-          {/* <a href="http://localhost:5173/pokemon/game"> */}
+        <Link to={`/pokemon/players/player/${param2}/game`}>
           <button className="handleClick bg-red-700 text-white rounded w-auto p-2">
             Go to Arena
           </button>

@@ -8,6 +8,8 @@ import Head from "../components/Header.jsx";
 
 function AllPokemon({ allData, setAllData }) {
   const playerId = useParams();
+  console.log(playerId.id);
+
   const [pokemonpic, setPokemonpic] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,7 +18,7 @@ function AllPokemon({ allData, setAllData }) {
     const fetchPokemonData = async () => {
       try {
         const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon?limit=20"
+          "https://pokeapi.co/api/v2/pokemon?limit=50"
         );
         const data = await response.json();
         const pokemonPromises = data.results.map(async (pokemon) => {

@@ -71,7 +71,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="/pokemon/players/:id/:id"
+                  path="/pokemon/players/:param1/:param2"
                   element={
                     <Singlepokemon
                       setpokemonId={setpokemonId}

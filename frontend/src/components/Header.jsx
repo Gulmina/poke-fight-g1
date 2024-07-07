@@ -29,9 +29,9 @@ const Header = ({ player }) => {
       >
         <div className="justify-self-start">
           <Link to={`/`}>
-            <button className=" m-2 text-xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl w-20 h-12 p-1">
+            <button className=" m-2 text-xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl w-15 h-12 p-1">
               <img
-                width="30px"
+                width="40px"
                 hieght="30px"
                 className="p-1"
                 src={home}
