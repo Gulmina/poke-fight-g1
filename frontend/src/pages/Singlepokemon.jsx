@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import startBattle from "./Startbattle.jsx";
 import { Link } from "react-router-dom";
 //import backgroundimg from "../components/Background.jsx";
 import { Card } from "antd";
+import Head from "../components/Header.jsx";
 
 const Singlepokemon = ({ pokemonId, setpokemonId }) => {
   var { id, player } = useParams();
-  const [pokemonpic, setPokemonpic] = useState([]);
+
   console.log(id);
   console.log(player);
 
@@ -28,6 +30,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
 
   return (
     <>
+      <Head player={player} />
       <div className="grid grid-cols-2 p-4 justify-items-center border border-slate-300 hover:border-indigo-300  rounded-lg m-4 bg-neutral-400">
         <div>
           <Card
@@ -66,7 +69,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
       </div>
 
       <div className=" justify-center items-center mt-5">
-        <Link to={`/pokemon/game`}>
+        <Link to={`/pokemon/players/:id/:${id}/game`}>
           {/* <a href="http://localhost:5173/pokemon/game"> */}
           <button className="handleClick bg-red-700 text-white rounded w-auto p-2">
             Go to Arena
