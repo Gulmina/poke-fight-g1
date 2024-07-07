@@ -30,7 +30,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
 
   return (
     <>
-      <Head player={player} />
+      <Head />
       <div className="grid grid-cols-2 p-4 justify-items-center border border-slate-300 hover:border-indigo-300  rounded-lg m-4 bg-neutral-400">
         <div>
           <Card

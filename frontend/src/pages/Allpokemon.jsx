@@ -4,7 +4,7 @@ import axios from "axios";
 import { Card } from "antd";
 const { Meta } = Card;
 
-import img from "../components/Card.jsx";
+import Head from "../components/Header.jsx";
 
 function AllPokemon({ allData, setAllData }) {
   const playerId = useParams();
@@ -59,54 +59,53 @@ function AllPokemon({ allData, setAllData }) {
 
   }, []); */
 
-
-
-
   // const img = allData.map((e) => e.id);
   return (
-    <div className="bg-gray-300 text-center">
-      <div className="font-bold text-4xl pt-8 text-orange-300">
-        <strong className="text-black"> {playerId.id} </strong>
-        <p>pick your favourite Pokemon for the battle</p>
-      </div>
-      <div>
-        {pokemonpic.map((pokemon) => (
-          <div key={pokemon.id}>
-            <div className="grid grid-cols-2 align-middle p-4 justify-items-center border border-slate-300 hover:border-indigo-300  rounded-lg m-4 bg-neutral-400 ">
-              <div>
-                {pokemon.sprites && pokemon.sprites.front_default ? (
-                  <Card
-                    hoverable
-                    style={{
-                      width: 240,
-                    }}
-                    cover={
-                      <img
-                        src={pokemon.sprites.front_default}
-                        alt={pokemon.name}
-                      />
-                    }
-                  >
-                    <h2>
-                      <strong>{pokemon.name}</strong>
-                    </h2>
-                  </Card>
-                ) : (
-                  <p>No image available</p>
-                )}
-              </div>
-              <div>
-                <Link to={`/pokemon/players/${playerId.id}/${pokemon.id}`}>
-                  <button className="text-xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl  w-40 h-12 mt-5">
-                    SELECT
-                  </button>
-                </Link>
+    <>
+      <Head player={playerId.id} />
+      <div className="bg-gray-300 text-center">
+        <div className="font-bold text-4xl pt-8 text-orange-300">
+          <strong className="text-black"> {playerId.id} </strong>
+          <p>pick your favourite Pokemon for the battle</p>
+        </div>
+        <div>
+          {pokemonpic.map((pokemon) => (
+            <div key={pokemon.id}>
+              <div className="grid grid-cols-2 align-middle p-4 justify-items-center border border-slate-300 hover:border-indigo-300  rounded-lg m-4 bg-neutral-400 ">
+                <div>
+                  {pokemon.sprites && pokemon.sprites.front_default ? (
+                    <Card
+                      hoverable
+                      style={{
+                        width: 240,
+                      }}
+                      cover={
+                        <img
+                          src={pokemon.sprites.front_default}
+                          alt={pokemon.name}
+                        />
+                      }
+                    >
+                      <h2>
+                        <strong>{pokemon.name}</strong>
+                      </h2>
+                    </Card>
+                  ) : (
+                    <p>No image available</p>
+                  )}
+                </div>
+                <div>
+                  <Link to={`/pokemon/players/${playerId.id}/${pokemon.id}`}>
+                    <button className="text-xl font-medium pb-1 shadow-xl duration-300 hover:bg-red-600 bg-green-500 text-white rounded-3xl  w-40 h-12 mt-5">
+                      SELECT
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-      {/*   {allData.length > 0 ? (
+          ))}
+        </div>
+        {/*   {allData.length > 0 ? (
         allData.map((pokemon) => (
           <div key={pokemon.id}>
             <Link to={`/pokemon/players/${playerId.id}/${pokemon.id}`}>
@@ -162,7 +161,8 @@ function AllPokemon({ allData, setAllData }) {
       ) : (
         <div>Loading...</div>
       )} */}
-    </div>
+      </div>
+    </>
   );
 }
 
