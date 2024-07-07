@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Head from "../components/Header.jsx";
 import { Card } from "antd";
+import Endgame from "../components/Savegame.jsx";
 
 const Game = ({
   pokemonId,
@@ -156,6 +157,8 @@ const Game = ({
     // Container code
 
     <>
+      {/* saving information into the backedn */}
+      {/* <Endgame player={playername} /> */}
       <Head player={playername} />
       <div className="Game">
         <div className="w-auto bg-blue-200 p-8">
@@ -317,6 +320,7 @@ const Game = ({
                   Attack
                 </button>
               )}
+              <Endgame player={playername} />
             </div>
           </div>
         </div>
