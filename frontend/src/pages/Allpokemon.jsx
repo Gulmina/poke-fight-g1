@@ -21,7 +21,7 @@ function AllPokemon({ allData, setAllData }) {
           "https://pokeapi.co/api/v2/pokemon?limit=500"
         );
         const data = await response.json();
-        const pokemonPromises = data.results.map(async (pokemon) => {
+        const pokemonPromises = data.results?.map(async (pokemon) => {
           const pokemonResponse = await fetch(pokemon.url);
           return pokemonResponse.json();
         });
@@ -36,6 +36,29 @@ function AllPokemon({ allData, setAllData }) {
 
     fetchPokemonData();
   }, []);
+  // useEffect(() => {
+  //   let arr=[]
+  //   const fetchPokemonData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://pokeapi.co/api/v2/pokemon?limit=500"
+  //       );
+  //       const data = await response.json();
+  //       const pokemonPromises = data.results?.map(async (pokemon) => {
+  //         const pokemonResponse = await fetch(pokemon.url);
+  //         const pokei=await pokemonResponse.json();
+  //         return arr.push(pokei)
+  //       });
+  //       setPokemonpic(arr);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setError("Error fetching Pokémon data.");
+  //       console.error("Error fetching Pokémon data:", error);
+  //     }
+  //   };
+
+  //   fetchPokemonData();
+  // }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -71,7 +94,7 @@ function AllPokemon({ allData, setAllData }) {
           <p>Pick your favourite Pokemon for the battle</p>
         </div>
         <div>
-          {pokemonpic.map((pokemon) => (
+          {pokemonpic?.map((pokemon) => (
             <div key={pokemon.id}>
               <div className="grid grid-cols-2 align-middle p-4 justify-items-center border border-slate-300 hover:border-indigo-300  rounded-lg m-4 bg-neutral-400 ">
                 <div>
