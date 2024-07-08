@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, baseurl } from "react";
 import axios from "axios";
 import "@blueprintjs/table/lib/css/table.css";
 import { Cell, Column, Table } from "@blueprintjs/table";
@@ -12,7 +12,7 @@ const Leaderboard = () => {
   const [games, setGames] = useState([]);
 
   const handleClick2 = (item) => {
-    const response = fetch("http://localhost:8000/game/delete" + "/" + item, {
+    const response = fetch(`${baseurl}/game/delete` + "/" + item, {
       method: "delete",
     });
     return response.json();
@@ -50,7 +50,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     const fetchGames = async () => {
-      const res = await axios.get("http://localhost:8000/game/gameinfo/");
+      const res = await axios.get(`${baseurl}/game/gameinfo/`);
       setGames(res.data);
     };
     fetchGames();

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import App from "../App";
-import Pokemondata from "../../../backend/models/pokemonModel";
+/* import Pokemondata from "../../../backend/models/pokemonModel"; */
 
-const Pokemoninfo = ({pokemonData, setPokemonData}) => {
+const Pokemoninfo = ({ pokemonData, setPokemonData }) => {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
@@ -13,8 +13,9 @@ const Pokemoninfo = ({pokemonData, setPokemonData}) => {
 
   const handleFetch = async () => {
     try {
-
-      const res = await axios.get(`http://localhost:8000/pokemon/${id}/${info}`);
+      const res = await axios.get(
+        `http://localhost:8000/pokemon/${id}/${info}`
+      );
 
       console.log(res.data);
       setPokemonData(res.data);
@@ -37,7 +38,6 @@ const Pokemoninfo = ({pokemonData, setPokemonData}) => {
       <div>
         {pokemonData ? (
           <div>
-
             <p>
               <strong>Pokemon {info} :</strong>
               {pokemonData &&
@@ -45,7 +45,6 @@ const Pokemoninfo = ({pokemonData, setPokemonData}) => {
                   <li key={index}>{item} </li>
                 ))}
             </p>
-
           </div>
         ) : (
           <p>Loading Pokémon data...</p>

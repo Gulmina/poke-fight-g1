@@ -50,6 +50,10 @@ const layoutStyle = {
 };
 
 function App() {
+  const baseurl =
+    import.meta.env.PROCESS_ENV === "production"
+      ? "https://poke-fight-g1-qsah.onrender.com/"
+      : "http://localhost:8000";
   const [pokemonId, setpokemonId] = useState([]);
   const [pokemonData, setPokemonData] = useState([]);
   const [allData, setAllData] = useState([]);
@@ -63,7 +67,7 @@ function App() {
           <Layout style={layoutStyle}>
             <Content style={contentStyle}>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home baseurl={baseurl} />} />
                 <Route
                   path="/pokemon/players/:id"
                   element={
@@ -76,6 +80,7 @@ function App() {
                     <Singlepokemon
                       setpokemonId={setpokemonId}
                       pokemonId={pokemonId}
+                      baseurl={baseurl}
                     />
                   }
                 />
@@ -95,15 +100,25 @@ function App() {
                       pokemonId={pokemonId}
                       randomPokemonPC={randomPokemonPC}
                       setrandomPokemonPC={setrandomPokemonPC}
+                      baseurl={baseurl}
                     />
                   }
 
                   //  path="/pokemon/players/:id/:id/game"
                   //   element={<Game pokemonId={pokemonId} />}
                 />
-                <Route path="/pokemon/cards" element={<Card />} />
-                <Route path="/pokemon/players" element={<Playerselect />} />
-                <Route path="/pokemon/game/leaderboard" element={<Lb />} />
+                <Route
+                  path="/pokemon/cards"
+                  element={<Card baseurl={baseurl} />}
+                />
+                <Route
+                  path="/pokemon/players"
+                  element={<Playerselect baseurl={baseurl} />}
+                />
+                <Route
+                  path="/pokemon/game/leaderboard"
+                  element={<Lb baseurl={baseurl} />}
+                />
                 <Route
                   path="/pokemon/battle"
                   element={
@@ -111,6 +126,7 @@ function App() {
                       randomPokemonPC={randomPokemonPC}
                       setrandomPokemonPC={setrandomPokemonPC}
                       pokemonId={pokemonId}
+                      baseurl={baseurl}
                     />
                   }
                 />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Savegame = ({ player, win, lost }) => {
+const Savegame = ({ player, win, lost, baseurl }) => {
   console.log(player, win, lost);
   const newdata = {
     name: `${player}`,
@@ -11,7 +11,7 @@ const Savegame = ({ player, win, lost }) => {
   };
 
   const handleClick = (message) => {
-    const response = fetch("http://localhost:8000/game/savegame", {
+    const response = fetch(`${baseurl}/game/savegame`, {
       method: "POST",
       body: JSON.stringify(message),
       headers: { "Content-type": "application/json; charset=UTF-8" },
