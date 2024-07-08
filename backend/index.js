@@ -14,7 +14,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());
 
 ///Sending and retrieving data from data base//
