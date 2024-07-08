@@ -20,6 +20,9 @@ const Game = ({
 
   const [showDataPC, setShowDataPC] = useState(false);
 
+  const [winner, setWinner] = useState(0);
+  const [lost, setLost] = useState(0);
+
   const handleFetch = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/pokemon`);
@@ -114,11 +117,13 @@ const Game = ({
           ...prevLog,
           `${randomPokemonPC.name.english} wins!`,
         ]);
+        setLost(1);
       } else if (randomPokemonPC.base.HP === 0) {
         setBattleLog((prevLog) => [
           ...prevLog,
           `${pokemonId.name.english} wins!`,
         ]);
+        setWinner(1);
       }
     }
   };
@@ -167,7 +172,7 @@ const Game = ({
             <div className="flex flex-row">
               <div>
                 <img
-                  src="../src/assets/Pokemon-Logo-PNG-Image-File-3440649988.png"
+                  src="/../src/assets/Pokemon-Logo-PNG-Image-File-3440649988.png"
                   alt="pokemon logo"
                   width={100}
                 />
@@ -320,7 +325,7 @@ const Game = ({
                   Attack
                 </button>
               )}
-              <Endgame player={playername} />
+              <Endgame player={playername} win={winner} lost={lost} />
             </div>
           </div>
         </div>

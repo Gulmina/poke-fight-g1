@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Savegame = ({ player }) => {
-  console.log(player);
+const Savegame = ({ player, win, lost }) => {
+  console.log(player, win, lost);
   const newdata = {
     name: `${player}`,
-    winner: 0,
-    loser: 1,
+    winner: `${win}`,
+    loser: `${lost}`,
     games: 1,
   };
 
