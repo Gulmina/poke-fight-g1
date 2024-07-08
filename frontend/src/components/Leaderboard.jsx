@@ -8,7 +8,7 @@ import { Avatar, Space } from "antd";
 import { CheckCircleTwoTone } from "@ant-design/icons";
 
 import Head from "./Header";
-const Leaderboard = () => {
+const Leaderboard = ({ baseurl }) => {
   const [games, setGames] = useState([]);
 
   const handleClick2 = (item) => {
