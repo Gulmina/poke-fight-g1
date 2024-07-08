@@ -15,12 +15,32 @@ connectDB();
 
 const app = express();
 
-const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "http://localhost:5173",
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: process.env.CORS_ORIGIN || "http://localhost:5173",
+//   credentials: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+const allowedOrigins = [
+  `https://sparkling-biscochitos-fa9d0d.netlify.app`,
+  "https://pokeapi.co/api/v2/pokemon?limit=500",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          "The CORS policy for this site does not " +
+          "allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 app.use(express.json());
 
