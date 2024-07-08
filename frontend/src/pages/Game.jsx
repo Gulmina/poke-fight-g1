@@ -12,6 +12,7 @@ const Game = ({
   setPokemonId,
   randomPokemonPC,
   setrandomPokemonPC,
+  baseurl,
 }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
@@ -25,7 +26,7 @@ const Game = ({
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/pokemon`);
+      const res = await axios.get(`${baseurl}/pokemon`);
 
       setData(res.data);
     } catch (error) {
@@ -325,7 +326,12 @@ const Game = ({
                   Attack
                 </button>
               )}
-              <Endgame player={playername} win={winner} lost={lost} />
+              <Endgame
+                player={playername}
+                win={winner}
+                lost={lost}
+                baseurl={baseurl}
+              />
             </div>
           </div>
         </div>

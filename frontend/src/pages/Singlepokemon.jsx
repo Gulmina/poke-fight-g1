@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { Card } from "antd";
 import Head from "../components/Header.jsx";
 
-const Singlepokemon = ({ pokemonId, setpokemonId }) => {
+const Singlepokemon = ({ pokemonId, setpokemonId, baseurl }) => {
   var { param1, param2 } = useParams();
   const playername = param1;
   console.log(playername);
@@ -15,9 +15,7 @@ const Singlepokemon = ({ pokemonId, setpokemonId }) => {
 
   const getpokemondata = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:8000/pokemon/${param2}`
-      );
+      const response = await axios.get(`${baseurl}/pokemon/${param2}`);
       setpokemonId(response.data);
     } catch (error) {
       console.error("Error", error);
