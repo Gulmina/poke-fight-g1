@@ -36,6 +36,29 @@ function AllPokemon({ allData, setAllData }) {
 
     fetchPokemonData();
   }, []);
+  // useEffect(() => {
+  //   let arr=[]
+  //   const fetchPokemonData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://pokeapi.co/api/v2/pokemon?limit=500"
+  //       );
+  //       const data = await response.json();
+  //       const pokemonPromises = data.results?.map(async (pokemon) => {
+  //         const pokemonResponse = await fetch(pokemon.url);
+  //         const pokei=await pokemonResponse.json();
+  //         return arr.push(pokei)
+  //       });
+  //       setPokemonpic(arr);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setError("Error fetching Pokémon data.");
+  //       console.error("Error fetching Pokémon data:", error);
+  //     }
+  //   };
+
+  //   fetchPokemonData();
+  // }, []);
 
   if (loading) {
     return <div>Loading...</div>;
